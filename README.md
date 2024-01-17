@@ -1,6 +1,4 @@
-Certainly! Below is a template for your GitHub README file. You can copy and paste this into your README.md file on GitHub, and customize it further based on your preferences.
 
-```markdown
 # Weather Condition Recognition with Deep Learning
 
 ![Weather Classification](link_to_image)
