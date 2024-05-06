@@ -1,76 +1,76 @@
 
-# Weather Condition Recognition with Deep Learning
-
-![Weather Classification](link_to_image)
+# Multi-Class Weather Classification with Deep Learning
 
 ## Overview
-
-This repository contains the code and documentation for a deep learning model designed to recognize weather conditions from single images. The model is trained on the "Multiclass Images for Weather Classification" dataset available on Kaggle. The project focuses on implementing a Convolutional Neural Network (CNN) using the PyTorch framework.
+This project utilizes a convolutional neural network (CNN) model to classify images into one of four weather conditions: cloudy, rain, shine, or sunrise. The model is built using the PyTorch framework and trained on the "Multiclass Images for Weather Classification" dataset available on Kaggle.
 
 ## Dataset
+The dataset contains 1125 labeled images divided into training and testing sets. Each image is labeled with one of the following weather conditions:
+- Cloudy
+- Rain
+- Shine
+- Sunrise
 
-The dataset consists of 1125 labeled images, covering various weather conditions such as sunny, cloudy, rainy, snowy, or foggy. The dataset is divided into training and testing sets.
+The dataset can be accessed [here](https://www.kaggle.com/datasets/somesh24/multiclass-images-for-weather-classification).
 
-### Dataset Link
-[Dataset on Kaggle](https://www.kaggle.com/datasets/somesh24/multiclass-images-for-weather-classification)
-
-## Getting Started
-
-### Prerequisites
-
+## Prerequisites
 - Python 3.x
 - PyTorch
-- Matplotlib
-- Google Colab (for training in the provided notebook)
+- torchvision
+- matplotlib
+- numpy
 
-### Installation
-
-Clone the repository:
-
+You can install the necessary libraries using the following command:
 ```bash
-git clone https://github.com/YourUsername/Multiclass-Weather-Classification-Pytorch.git
-cd Multiclass-Weather-Classification-Pytorch
+pip install torch torchvision numpy matplotlib
 ```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-## Data Preprocessing
-
-1. Download the dataset from the provided [Google Drive link](https://drive.google.com/file/d/1sVJ4Y5zhMgj2dlyWHecdrMxNB3djisFT/view?usp=sharing).
-2. Extract the dataset to your Google Drive.
 
 ## Model Architecture
+The model used is a variant of ResNet, specifically ResNet9, which includes layers like:
+- Convolutional layers
+- Batch normalization
+- ReLU activations
+- Max Pooling
+- A fully connected layer
 
-The model architecture is based on ResNet9, a CNN architecture with residual blocks for enhanced performance. It includes various techniques such as normalization, data augmentation, and regularization to improve generalization.
+The architecture benefits from residual connections to facilitate deeper training without the model degrading.
 
 ## Training
+The model was trained using:
+- **Optimizer**: Adam
+- **Loss Function**: Cross-Entropy Loss
+- **Learning Rate Scheduling**: One-cycle policy with a maximum learning rate of 0.01
+- **Regularization**: Weight decay and gradient clipping
 
-To train the model, use the provided Colab notebook:
-[Multiclass_weather_classification_CNN_Koyiljon.ipynb](https://colab.research.google.com/github/Valiev-Koyiljon/Multiclass-weather-classification-Pytorch/blob/main/Multiclass_weather_classification_CNN_Koyiljon.ipynb)
+Training involved both base image transformations (resizing and normalization) and augmentations (random cropping, horizontal flipping) to improve generalization.
 
 ## Results
+The trained model achieved an accuracy of over 92% on the validation set. This high level of accuracy indicates that the model is well-generalized and performs well on unseen data.
 
-The model achieves an accuracy of over 92% on the validation set after 17 epochs.
+## Files
+- `train.py`: Script for training the model.
+- `model.py`: Contains the CNN model architecture.
+- `utils.py`: Helper functions for data loading and transformations.
+- `evaluate.py`: Script for evaluating the model on the test set.
 
-### Training Time
+## Usage
+To train the model, run:
+```bash
+python train.py
+```
+To evaluate the model on the test dataset, run:
+```bash
+python evaluate.py
+```
 
-The model was trained in approximately 3 minutes and 23 seconds.
+## Visualization
+We have included scripts that plot training/validation loss and accuracy which help in monitoring the training process. Additionally, the model's predictions on test images can be visualized to qualitatively assess its performance.
 
-## Testing
+## Contributions
+Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-Test the model with individual images using the provided code in the notebook.
+Please make sure to update tests as appropriate.
 
-## Save the Model
-
-The trained model weights are saved as `multiclass-weather-classification-resnet9.pth`. You can download it from [here](/content/multiclass-weather-classification-resnet9.pth).
-
-## Conclusion
-
-This project demonstrates the effectiveness of deep learning in weather classification tasks. The implementation includes advanced techniques to enhance model performance and prevent overfitting.
-
-Feel free to explore and contribute to this project!
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
 
